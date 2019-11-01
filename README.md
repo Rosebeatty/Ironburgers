@@ -1,51 +1,50 @@
-IRONBURGERS
+# IRONBURGERS
 
-Description
-
+## Description
 Ironburgers is a game where the chef (player) must catch 6 ingredients to make a burger (Two buns, a burger, cheese, tomato and lettuce). The player serves burgers to gain points and has two minutes to make and serve as many burgers as possible. If the chef tries to serve a burger containing the wrong ingredients, they must start making the burger again from scratch. The game is over when the chef serves 3 wrong burgers, or after two minutes. 
 
 
-MVP (DOM - CANVAS)
+</br>
 
+## MVP (DOM - CANVAS)
 A Canvas game where the player catches burger ingredients and serves the burgers.
 
+</br>
 
+## Backlog
+False Ingredients </br>
+Burger must be in a particular order </br>
+Serve the burger </br>
+Levels </br>
 
-Backlog
+</br>
 
-False Ingredients
-Burger must be in a particular order
-Serve the burger
-Levels
-
-
-
-Data structure
-
+## Data structure
 Main.js
 
+
 createSplashScreen(){
-}
-
+} </br>
 createGameScreen(){
-}
-
+} </br>
 createGameOverScreen(){
 }
 
-
+</br>
 
 Game.js
 
 Game(){
-  this.canvas;
-  this.ctx;
-  this.ingredients;
-  this.player;
-  this.gameIsOver;
-  this.gameScreen;
-  this.score;
-  this.burger;
+  
+  this.canvas; </br>
+  this.ctx; </br>
+  this.ingredients; </br>
+  this.player; </br>
+  this.gameIsOver; </br>
+  this.gameScreen; </br>
+  this.score; </br>
+  this.burger; </br>
+
 }
 
 Game.prototype.start(){
@@ -87,12 +86,13 @@ Game.prototype.removeGameScreen(){
 Game.prototype.drawCanvas(){ 
 }
 
-
+</br>
 
 Player.js
 
 Player() {
-    this.canvas;
+
+    this.canvas; 
     this.ctx;
     this.size;
     this.x;
@@ -103,7 +103,7 @@ Player() {
 }
 
 
-Player.prototype.setDirection (){
+Player.prototype.setDirection(){
 
 }
 
@@ -115,19 +115,22 @@ Player.prototype.serveBurger(){
 
 }
 
-Player.prototype.removeLife () {
+Player.prototype.removeLife() {
   
+
 }
 
 Player.prototype.playerImage() {
 
 }
 
+</br>
 
 Ingredients.js
 
 Ingredients() {
-    this.canvas;
+
+    this.canvas; 
     this.ctx;
     this.size;
     this.x;
@@ -143,18 +146,20 @@ Ingredients.prototype.updatePosition() {
 
 Ingredients.prototype.isInsideScreen () {
     
+
 }
 
 Ingredients.prototype.ingredientsImage () {
 
 }
 
+</br>
 
-States and States Transitions
+## States y States Transitions
 
 
 - createSplashScreen()
-  - addEventListener(startGame)
+     - addEventListener(startGame)
   
   
 - startGame()
@@ -167,40 +172,48 @@ States and States Transitions
   - addEventListener(startGame)
 
 
-
-Task
-
-Main - buildDom
-Main - createSplashScreen
-Main - addEventListener
-Main - createGameScreen
-Game - createdGameOverScreen
-Game - start
-Game - removeGameScreen
-Game - updateGameStats
-Game - drawCanvas
-Game - gameOver
-Game - checkCollision
-Game - checkIngredients
-Game - checkBurger
-Player - setDirection
-Player - caughtIngredient
-Player - serveBurger
-Player - removeLife
-Player - playerImage
-Ingredients - updatePosition
-Ingredients - isInsideScrren
-Ingredients - ingredientsImage
+</br>
 
 
+## Task
 
-Links
+Main - buildDom </br>
+Main - createSplashScreen </br>
+Main - addEventListener </br>
+Main - createGameScreen </br>
+Game - createdGameOverScreen </br>
+Game - start </br>
+Game - removeGameScreen </br>
+Game - updateGameStats </br>
+Game - drawCanvas </br>
+Game - gameOver </br>
+Game - checkCollision </br>
+Game - checkIngredients </br>
+Game - checkBurger </br>
+Player - setDirection </br>
+Player - caughtIngredient </br>
+Player - serveBurger </br>
+Player - removeLife </br>
+Player - playerImage </br>
+Ingredients - updatePosition </br>
+Ingredients - isInsideScrren </br>
+Ingredients - ingredientsImage </br>
 
-Trello
+
+</br>
+
+## Links
+
+
+### Trello
 https://trello.com/invite/b/xTLLCaOx/d77ae65958d049690f5a47848254994d/ironburgers
 
+<br/>
 
-Git
+### Git
+
+<br/>
+
+### Slides
 
 
-Slides
