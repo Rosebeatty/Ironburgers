@@ -7,213 +7,198 @@ Ironburgers is a game where the chef (player) must catch 6 ingredients to make a
 </br>
 
 ## MVP (DOM - CANVAS)
-A Canvas game where the player catches burger ingredients and serves the burgers.
+A Canvas game in which the player catches burger ingredients and serves burgers.
 
 </br>
 
 ## Backlog
-False Ingredients </br>
-Burger must be in a particular order </br>
-Serve the burger </br>
-Levels </br>
+    -False Ingredients 
+    -Burger must be in a particular order 
+    -Serve the burger 
+    -Levels 
 
-</br>
+
 
 ## Data structure
-Main.js
+<h2>Main.js</h2>
 
 
-createSplashScreen(){
-} </br>
-createGameScreen(){
-} </br>
-createGameOverScreen(){
-}
+    createSplashScreen(){
+    } 
+    createGameScreen(){
+    } 
+    createGameOverScreen(){
+    }
 
-</br>
 
-Game.js
 
-Game(){
+<h2> Game.js</h2>
+
+    Game(){
+      this.canvas; </br>
+      this.ctx; </br>
+      this.ingredients; </br>
+      this.player; </br>
+      this.gameIsOver; </br>
+      this.gameScreen; </br>
+      this.score; </br>
+      this.burger; </br>
+    }
+
+    Game.prototype.start(){
+
+    }
+
+    Game.prototype.startLoop(){
+
+    }
+
+    Game.prototype.checkCollision(){
+
+    }
+
+    Game.prototype.checkBurger(){
+
+    }
+
+    Game.prototype.checkIngredients(){
+
+    }
+
+    Game.prototype.updateGameStats(){
+
+    }
+
+    Game.prototype.gameOver(){
+
+    }
+
+    Game.prototype.removeGameScreen(){
+
+    }
+
+    Game.prototype.drawCanvas(){ 
+    }
+
+   
+
+<h2>Player.js</h2>
+
+    Player() {
+        this.canvas; 
+        this.ctx;
+        this.size;
+        this.x;
+        this.y;
+        this.speed;
+        this.direction;
+        this.lives
+    }
+
+
+    Player.prototype.setDirection(){
+
+    }
+
+    Player.prototype.caughtIngredient(){
+
+    }
+
+    Player.prototype.serveBurger(){
+
+    }
+
+    Player.prototype.removeLife() {
+      
+
+    }
+
+    Player.prototype.playerImage() {
+
+    }
+
   
-  this.canvas; </br>
-  this.ctx; </br>
-  this.ingredients; </br>
-  this.player; </br>
-  this.gameIsOver; </br>
-  this.gameScreen; </br>
-  this.score; </br>
-  this.burger; </br>
 
-}
+<h2>Ingredients.js</h2>
 
-Game.prototype.start(){
-
-}
-
-Game.prototype.startLoop(){
-
-}
-
-Game.prototype.checkCollision(){
-
-}
-
-Game.prototype.checkBurger(){
-
-}
-
-Game.prototype.checkIngredients(){
-
-}
-
-Game.prototype.updateGameStats(){
-
-}
-
-Game.prototype.gameOver(){
-
-}
-
-Game.prototype.passGameOverCallback(){
-
-}
-
-Game.prototype.removeGameScreen(){
-
-}
-
-Game.prototype.drawCanvas(){ 
-}
-
-</br>
-
-Player.js
-
-Player() {
-
-    this.canvas; 
-    this.ctx;
-    this.size;
-    this.x;
-    this.y;
-    this.speed;
-    this.direction;
-    this.lives
-}
+    Ingredients() {
+        this.canvas; 
+        this.ctx;
+        this.size;
+        this.x;
+        this.y;
+        this.speed;
+        this.images;
+    }
 
 
-Player.prototype.setDirection(){
+    Ingredients.prototype.updatePosition() {
 
-}
+    }
 
-Player.prototype.caughtIngredient(){
+    Ingredients.prototype.isInsideScreen () {
+        
 
-}
+    }
 
-Player.prototype.serveBurger(){
+    Ingredients.prototype.ingredientsImage () {
 
-}
+    }
 
-Player.prototype.removeLife() {
-  
+    
 
-}
-
-Player.prototype.playerImage() {
-
-}
-
-</br>
-
-Ingredients.js
-
-Ingredients() {
-
-    this.canvas; 
-    this.ctx;
-    this.size;
-    this.x;
-    this.y;
-    this.speed;
-    this.images;
-}
+## States and State Transitions
 
 
-Ingredients.prototype.updatePosition() {
-
-}
-
-Ingredients.prototype.isInsideScreen () {
-    
-
-}
-
-Ingredients.prototype.ingredientsImage () {
-
-}
-
-</br>
-
-## States y States Transitions
+    - createSplashScreen()
+        - addEventListener(startGame)
+      
+      
+    - startGame()
+      - create new Game()
+      - game.start()
+      
+      
+    - gameOver()
+      - createGameOverScreen()
+      - addEventListener(startGame)
 
 
-- createSplashScreen()
-     - addEventListener(startGame)
-  
-  
-- startGame()
-  - create new Game()
-  - game.start()
-  
-  
-- gameOver()
-  - createGameOverScreen()
-  - addEventListener(startGame)
+
+## Tasks
+    Main - buildDom 
+    Main - createSplashScreen 
+    Main - addEventListener 
+    Main - createGameScreen 
+    Game - createdGameOverScreen 
+    Game - start 
+    Game - removeGameScreen 
+    Game - updateGameStats 
+    Game - drawCanvas 
+    Game - gameOver 
+    Game - checkCollision 
+    Game - checkIngredients 
+    Game - checkBurger 
+    Player - setDirection 
+    Player - caughtIngredient 
+    Player - serveBurger 
+    Player - removeLife 
+    Player - playerImage 
+    Ingredients - updatePosition 
+    Ingredients - isInsideScrren 
+    Ingredients - ingredientsImage 
 
 
-</br>
-
-
-## Task
-
-Main - buildDom </br>
-Main - createSplashScreen </br>
-Main - addEventListener </br>
-Main - createGameScreen </br>
-Game - createdGameOverScreen </br>
-Game - start </br>
-Game - removeGameScreen </br>
-Game - updateGameStats </br>
-Game - drawCanvas </br>
-Game - gameOver </br>
-Game - checkCollision </br>
-Game - checkIngredients </br>
-Game - checkBurger </br>
-Player - setDirection </br>
-Player - caughtIngredient </br>
-Player - serveBurger </br>
-Player - removeLife </br>
-Player - playerImage </br>
-Ingredients - updatePosition </br>
-Ingredients - isInsideScrren </br>
-Ingredients - ingredientsImage </br>
-
-
-</br>
 
 ## Links
 
+  ### Trello
+  https://trello.com/invite/b/xTLLCaOx/d77ae65958d049690f5a47848254994d/ironburgers
 
-### Trello
-https://trello.com/invite/b/xTLLCaOx/d77ae65958d049690f5a47848254994d/ironburgers
 
-<br/>
+  ### Git
 
-### Git
 
-<br/>
-
-### Slides
+  ### Slides
 
 
