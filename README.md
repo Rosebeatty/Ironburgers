@@ -13,8 +13,7 @@ A Canvas game in which the player catches burger ingredients and serves burgers.
 
 ## Backlog
     -False Ingredients 
-    -Burger must be in a particular order 
-    -Serve the burger 
+    -Burger must be in a particular order  
     -Levels 
 
 
