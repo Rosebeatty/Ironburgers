@@ -1,7 +1,7 @@
 # IRONBURGERS
 
 ## Description
-Ironburgers is a game where the chef (player) must catch 6 ingredients to make a burger (Two buns, a burger, cheese, tomato and lettuce). The player serves burgers to gain points and has two minutes to make and serve as many burgers as possible. If the chef tries to serve a burger containing the wrong ingredients, they must start making the burger again from scratch. The game is over when the chef serves 3 wrong burgers, or after two minutes. 
+Ironburgers is a game where the chef (player) must catch 6 ingredients to make a burger (Two buns, a burger, cheese, tomato and lettuce). The player serves burgers to gain points and has 30 seconds to make and serve as many burgers as possible. If the chef tries to serve a burger containing the wrong ingredients, they must start making the burger again from scratch. The game is over when the chef serves 3 wrong burgers, or after two minutes. 
 
 
 </br>
