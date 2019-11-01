@@ -34,14 +34,14 @@ A Canvas game in which the player catches burger ingredients and serves burgers.
 <h2> Game.js</h2>
 
     Game(){
-      this.canvas; </br>
-      this.ctx; </br>
-      this.ingredients; </br>
-      this.player; </br>
-      this.gameIsOver; </br>
-      this.gameScreen; </br>
-      this.score; </br>
-      this.burger; </br>
+      this.canvas;
+      this.ctx; 
+      this.ingredients; 
+      this.player; 
+      this.gameIsOver;
+      this.gameScreen; 
+      this.score; 
+      this.burger;
     }
 
     Game.prototype.start(){
@@ -109,7 +109,6 @@ A Canvas game in which the player catches burger ingredients and serves burgers.
 
     Player.prototype.removeLife() {
       
-
     }
 
     Player.prototype.playerImage() {
@@ -137,7 +136,6 @@ A Canvas game in which the player catches burger ingredients and serves burgers.
 
     Ingredients.prototype.isInsideScreen () {
         
-
     }
 
     Ingredients.prototype.ingredientsImage () {
