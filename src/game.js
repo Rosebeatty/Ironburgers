@@ -4,7 +4,7 @@ function Game () {
     this.canvas = null;
     this.ctx = null;
     this.ingredients = [];
-    this.ingredients2 = ["bun", "bun", "cheese", "tomato", "lettuce", "burger"];
+    this.ingredients2 = ["bun", "bun", "burger", "cheese", "salad","tomato"];
     this.player = null;
     this.gameIsOver = false;
     this.gameScreen = null;
@@ -55,14 +55,14 @@ Game.prototype.start = function() {
 Game.prototype.startLoop = function() {
 
     var loop = function () {
-        console.log('in loop');
+        //console.log('in loop');
 
         if(Math.random() > 0.98) {
             var randomX = this.canvas.width * Math.random();
           
             var ingredient = new Ingredients(this.canvas, randomX, 5, this.ingredients.randomIngredient);
             this.ingredients.push(ingredient); 
-            console.log(ingredient)
+            //console.log(ingredient)
             }
 
         this.checkCollisions();
@@ -103,10 +103,11 @@ Game.prototype.checkCollisions = function() {
           if ( this.player.didCollide(ingredient) ) {
       
             //this.player.removeLife();
-            console.log('lives', this.player.lives);
+           // console.log('lives', this.player.lives);
 
-            this.checkIngredients();
-
+            this.checkIngredients(ingredient.randomIngredient);
+           
+             this.burger.push(ingredient.randomIngredient); 
             
             // Move the enemy off screen to the left
             ingredient.y = 0 - ingredient.size;
@@ -123,31 +124,28 @@ Game.prototype.checkCollisions = function() {
 
 // Burger array should contain two buns, no duplicates, no false ingredients
 
-Game.prototype.checkIngredients = function(ingredient) {
-/*
-    if (this.burger.length > 6) {
-      return false;
-    } 
-     */
-    if (this.burger !== this.ingredients2) {
-        this.burger.push(ingredient); 
-    } 
-   
-    if (this.burger === this.ingredients2) {
+Game.prototype.checkIngredients = function() {
+
+    if (this.burger.sort().join() !== this.ingredients2.join()) {
+        //this.burger.push(ingredient); 
+        
+        console.log(this.burger)
+        return false
+    } else if (this.burger.sort().join() === this.ingredients2.join()) {
+        console.log(this.burger)
         return true;
-    } else {
-    return false
     }
 }
 
 //If the burger has the correct ingredients return true or false 
 /*
-Game.prototype.checkBurger = function(ingredient) {
+Game.prototype.checkBurger = function() {
 
-if(checkIngredients(ingredient) === true) {
+var ing = this.ingredients.randomIngredient;
+if(this.checkIngredients(ing) === true) {
     return true
 } else {
-this.player.removeLife();
+return false
 }
 }
 */
@@ -159,14 +157,21 @@ Game.prototype.serveBurger = function(serve) {
      this.score += 1;
     };
     this.score += 1;*/
-    if(serve === 'down' && this.checkIngredients() === true) {
-        console.log("hello")
+    if(serve === 'down') {
+        this.burger.length = 6;
+        if(this.checkIngredients() === true) {
+       
             this.score += 1;
-        } else {
+        } else if ( this.checkIngredients() === false) {
+
+           
             this.player.removeLife();
+            
+           // console.log(ing)
         }
-   
- }
+
+        }
+}
 
 Game.prototype.updateGameStats = function() {
     this.livesEle.innerHTML = this.player.lives;

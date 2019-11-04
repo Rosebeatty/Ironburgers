@@ -70,12 +70,10 @@ Player.prototype.handleScreenCollision = function() {
         }
 
 Player.prototype.removeLife = function() {
+        if (this.lives >= 1) {this.lives -= 1;
 
-        if(this.burger !== this.ingredients) {
-
-        this.lives -= 1;
+       
         }
-
 };
 
 Player.prototype.draw = function() {
