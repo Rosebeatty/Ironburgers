@@ -162,6 +162,7 @@ Game.prototype.serveBurger = function(serve) {
         if(this.checkIngredients() === true) {
        
             this.score += 1;
+            this.burger = [];
         } else if ( this.checkIngredients() === false) {
 
            

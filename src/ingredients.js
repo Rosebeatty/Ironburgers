@@ -3,7 +3,7 @@
 function Ingredients (canvas, x, speed){
     this.canvas = canvas;
     this.ctx = canvas.getContext('2d');
-    this.size = 90;
+    this.size = 80;
     this.x = x;
     this.y = 0;
     this.speed = speed;
