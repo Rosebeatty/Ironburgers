@@ -4,11 +4,11 @@ function Player (canvas, lives) {
     this.canvas = canvas;
     this.ctx = this.canvas.getContext('2d');
     this.lives = lives;
-    this.size = 80;
+    this.size = 90;
     this.x = canvas.width / 2;
     this.y = canvas.height - this.size;
     this.direction = 0;
-    this.speed = 2.9;
+    this.speed = 3.5;
     this.chefList = ['chef']
     this.chef = this.chefList[Math.floor(Math.random() * this.chefList.length)]
 

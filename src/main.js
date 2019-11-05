@@ -58,12 +58,14 @@ function main() {
         </div>
       </header>
       <div class="canvas-container">
-      <div class="collected">Ingredients:</div>
+      
         <canvas></canvas>
       </div>
-      
+      <div class="collected">
+      <span class="label" id="collect">Ingredients:</span>
+      </div>
     </main>
-    <div id="counter-top></div>
+  
   `);
 
     document.body.appendChild(gameScreen);
@@ -85,6 +87,9 @@ function main() {
         <h1 id="game-over">GAME OVER</h1>
         <p id="your-score">Your Score: <span></span></p>
         <button id="restart-button">RESTART</button>
+        <table>
+            <th>Scoreboard:</th>
+        </table>
         </main>
     `);
   

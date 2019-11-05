@@ -26,13 +26,14 @@ Game.prototype.start = function() {
     
     this.canvas.style.background = "url('./images/bg.jpg')";
     this.canvas.style.backgroundSize = "contain";
-    this.canvas.style.marginBottom = "50px;";
+    this.canvas.style.marginBottom = "20px;";
 
 
     this.livesEle = this.gameScreen.querySelector('.lives .value');
     this.scoreEle = this.gameScreen.querySelector('.score .value');
     this.timerEle = this.gameScreen.querySelector('.time .value');
-    this.collectedEle = this.gameScreen.querySelector('.collected')
+    this.collectedEle = this.gameScreen.querySelector('.collected');
+    
 
     this.containerWidth = this.canvasContainer.offsetWidth;
     this.containerHeight = this.canvasContainer.offsetHeight;
@@ -73,7 +74,7 @@ Game.prototype.startLoop = function() {
     var loop = function () {
         //console.log('in loop');
 
-        if(Math.random() > 0.985) {
+        if(Math.random() > 0.98 && Math.random() > 0.4) {
             var randomX = this.canvas.width * Math.random();
             var ingredient = new Ingredients(this.canvas, randomX, 2.5, this.ingredients.randomIngredient);
             this.ingredients.push(ingredient); 
@@ -137,11 +138,12 @@ Game.prototype.checkCollisions = function() {
            
             if(this.burger.length >= 6) {
                 this.burger.length = 6;
-            } 
+            } else {
                 this.burger.push(ingredient.randomIngredient); 
-            
+                this.collectedEle.appendChild(document.createElement('img')).src = `./images/${ingredient.randomIngredient}.png`;
+
+            }
              
-           
             
             // Move the enemy off screen to the left
             ingredient.y = 0 - ingredient.size;
@@ -156,12 +158,10 @@ Game.prototype.checkCollisions = function() {
         
           }
         }, this);
-        // We have to bind `this`
-        // as array method callbacks have a 
-
+     
 };
 
-// Burger array should contain two buns, no duplicates, no false ingredients
+// Burger array should contain two buns, no duplicates
 
 Game.prototype.checkIngredients = function() {
 
@@ -176,20 +176,6 @@ Game.prototype.checkIngredients = function() {
     }
 }
 
-//If the burger has the correct ingredients return true or false 
-/*
-Game.prototype.checkBurger = function() {
-
-var ing = this.ingredients.randomIngredient;
-if(this.checkIngredients(ing) === true) {
-    return true
-} else {
-return false
-}
-}
-*/
-
-//Serve Burger??
 
 Game.prototype.serveBurger = function(serve) {
     /*if(checkIngredients(`${source}`) === true) {
@@ -198,7 +184,7 @@ Game.prototype.serveBurger = function(serve) {
     this.score += 1;*/
     if(serve === 'down') {
         if(this.checkIngredients() === true) {
-            this.score += 1;
+            this.score += 100;
             this.burger=[];
         } else if ( this.checkIngredients() === false) {
             this.player.removeLife();
@@ -213,8 +199,7 @@ Game.prototype.updateGameStats = function() {
     this.livesEle.innerHTML = this.player.lives;
     this.scoreEle.innerHTML = this.score;
     this.timerEle.innerHTML = this.countBack;
-    this.collectedEle.innerHTML = this.burger;
-    //this.timerEle.innerHTML = this.timer;
+
   };
 
 Game.prototype.passGameOverCallback = function(gameOver) {

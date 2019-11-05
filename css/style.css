@@ -145,7 +145,8 @@ main button {
   
   .game .canvas-container {
     flex: 1;
-    margin-bottom:50px;
+    margin-bottom:10px;
+    margin-top:20px;
   }
 
   #counter-top {
@@ -155,7 +156,21 @@ main button {
     margin-bottom:20px;
   }
 
-  .collected {
+  .collected  {
     font-size:25px;
-    float:right;
+    margin-bottom:20px;
+    padding-top:25px;
+    padding-bottom:20px;
+  
+  }
+
+  .collected img {
+    width:60px;
+    height:60px;
+    margin-bottom:-25px;
+
+  }
+
+  #collect {
+    padding-bottom:20px;
   }
