@@ -4,12 +4,18 @@ function Game () {
     this.canvas = null;
     this.ctx = null;
     this.ingredients = [];
-    this.ingredients2 = ["bun", "bun", "burger", "cheese", "salad","tomato"];
+    this.ingredients2 = ["bun", "bun2", "cheese", "patty","salad","tomatoes"];
     this.player = null;
     this.gameIsOver = false;
     this.gameScreen = null;
     this.score = 0;
-    this.burger = []
+    this.burger = [];
+    this.gameTime = 60;
+    this.countFrames = 0;
+    this.countBack = 0;
+    this.countSeconds = 0;
+    
+  
 }
 
 // Create `ctx`, a `player` and start the Canvas loop
@@ -18,11 +24,15 @@ Game.prototype.start = function() {
     this.canvas = this.gameScreen.querySelector('canvas');
     this.ctx = this.canvas.getContext('2d');
     
-    this.canvas.style.background = "url('./images/classic-checkerboard.jpg')";
+    this.canvas.style.background = "url('./images/bg.jpg')";
+    this.canvas.style.backgroundSize = "contain";
+    this.canvas.style.marginBottom = "50px;";
 
 
     this.livesEle = this.gameScreen.querySelector('.lives .value');
     this.scoreEle = this.gameScreen.querySelector('.score .value');
+    this.timerEle = this.gameScreen.querySelector('.time .value');
+    this.collectedEle = this.gameScreen.querySelector('.collected')
 
     this.containerWidth = this.canvasContainer.offsetWidth;
     this.containerHeight = this.canvasContainer.offsetHeight;
@@ -45,26 +55,43 @@ Game.prototype.start = function() {
           }
     }
 
+   // console.log(this.currentTime)
+
+      
     var gameReference = this;
 
     document.body.addEventListener('keydown', this.handleKeyDown.bind(gameReference));
 
+
     this.startLoop();
 };
+
+
 
 Game.prototype.startLoop = function() {
 
     var loop = function () {
         //console.log('in loop');
 
-        if(Math.random() > 0.98) {
+        if(Math.random() > 0.985) {
             var randomX = this.canvas.width * Math.random();
-          
-            var ingredient = new Ingredients(this.canvas, randomX, 5, this.ingredients.randomIngredient);
+            var ingredient = new Ingredients(this.canvas, randomX, 2.5, this.ingredients.randomIngredient);
             this.ingredients.push(ingredient); 
             //console.log(ingredient)
             }
 
+
+        //this.timer = Math.floor(this.counter / 60);   
+        this.countFrames++
+        this.countSeconds = Math.floor(this.countFrames /60);
+        this.countBack = this.gameTime - this.countSeconds;
+
+        
+        if(this.countBack=== 0) {
+            this.gameOver();
+        }  
+           
+           
         this.checkCollisions();
         this.player.handleScreenCollision();
 
@@ -83,10 +110,11 @@ Game.prototype.startLoop = function() {
         })
 
         if(!this.gameIsOver) {
-
         window.requestAnimationFrame(loop);
+       
     }
-    
+   
+
    this.updateGameStats();
 }.bind(this);
 
@@ -107,7 +135,13 @@ Game.prototype.checkCollisions = function() {
 
             this.checkIngredients(ingredient.randomIngredient);
            
-             this.burger.push(ingredient.randomIngredient); 
+            if(this.burger.length >= 6) {
+                this.burger.length = 6;
+            } 
+                this.burger.push(ingredient.randomIngredient); 
+            
+             
+           
             
             // Move the enemy off screen to the left
             ingredient.y = 0 - ingredient.size;
@@ -115,6 +149,11 @@ Game.prototype.checkCollisions = function() {
             if (this.player.lives === 0) {
               this.gameOver();
             }
+          
+           //var time1 = parseInt(new Date().getTime());
+           //console.log(time1 /3600000000)
+        
+        
           }
         }, this);
         // We have to bind `this`
@@ -130,7 +169,7 @@ Game.prototype.checkIngredients = function() {
         //this.burger.push(ingredient); 
         
         console.log(this.burger)
-        return false
+        return false;
     } else if (this.burger.sort().join() === this.ingredients2.join()) {
         console.log(this.burger)
         return true;
@@ -158,16 +197,12 @@ Game.prototype.serveBurger = function(serve) {
     };
     this.score += 1;*/
     if(serve === 'down') {
-        this.burger.length = 6;
         if(this.checkIngredients() === true) {
-       
             this.score += 1;
-            this.burger = [];
+            this.burger=[];
         } else if ( this.checkIngredients() === false) {
-
-           
             this.player.removeLife();
-            
+            this.burger=[];
            // console.log(ing)
         }
 
@@ -177,6 +212,9 @@ Game.prototype.serveBurger = function(serve) {
 Game.prototype.updateGameStats = function() {
     this.livesEle.innerHTML = this.player.lives;
     this.scoreEle.innerHTML = this.score;
+    this.timerEle.innerHTML = this.countBack;
+    this.collectedEle.innerHTML = this.burger;
+    //this.timerEle.innerHTML = this.timer;
   };
 
 Game.prototype.passGameOverCallback = function(gameOver) {

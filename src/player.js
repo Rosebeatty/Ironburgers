@@ -4,11 +4,11 @@ function Player (canvas, lives) {
     this.canvas = canvas;
     this.ctx = this.canvas.getContext('2d');
     this.lives = lives;
-    this.size = 100;
+    this.size = 80;
     this.x = canvas.width / 2;
     this.y = canvas.height - this.size;
     this.direction = 0;
-    this.speed = 5;
+    this.speed = 2.9;
     this.chefList = ['chef']
     this.chef = this.chefList[Math.floor(Math.random() * this.chefList.length)]
 
@@ -24,8 +24,6 @@ Player.prototype.setDirection = function(direction) {
     }
 };
 
-Player.prototype.caughtIngredient = function() {
-}
 
 
 Player.prototype.didCollide = function(ingredient) {
@@ -59,18 +57,19 @@ Player.prototype.didCollide = function(ingredient) {
 Player.prototype.handleScreenCollision = function() {
         this.x = this.x + this.direction * this.speed;
 
-        var screenTop = 0;
-        var screenBottom = this.canvas.height;
+        var screenLeft = 0;
+        var screenRight = this.canvas.width;
 
-        if(this.x > screenBottom) {
+        if(this.x > screenRight - this.size) {
             this.direction = -1
-        } else if (this.x< screenTop) {
+        } else if (this.x< screenLeft) {
                 this.direction = 1;
             }
         }
 
 Player.prototype.removeLife = function() {
-        if (this.lives >= 1) {this.lives -= 1;
+        if (this.lives >= 1) {
+            this.lives -= 1;
 
        
         }
@@ -78,7 +77,7 @@ Player.prototype.removeLife = function() {
 
 Player.prototype.draw = function() {
     var image = new Image();
-    const imageUrl = `./images/${this.chef}.jpg`;
+    const imageUrl = `./images/${this.chef}.png`;
     image.src  = imageUrl;
     this.ctx.drawImage(image, this.x, this.y, this.size, this.size);
 

@@ -10,6 +10,7 @@ html {
   body {
     margin: 0;
     padding: 0;
+   
   }
   
   
@@ -20,6 +21,8 @@ html {
     font-family: Helvetica, Arial, sans-serif;
     font-size: 16px;
     line-height: 147%;
+    overflow:hidden;
+    
   }
   
   p {
@@ -45,11 +48,13 @@ html {
     justify-content: center;
     margin:0 auto;
     height:100%;
+    padding-top:20px;
   }
 
 
 #splash-title {
   font-size:100px;
+  padding-top:20px;
 }
   
 main button {
@@ -120,20 +125,37 @@ main button {
   
   .game .score {
     flex: 1;
+
   }
 
   .game .time {
     flex: 1;
+
   }
   
   .game .label {
     font-weight: bold;
+    font-size:25px;
   }
   
   .game .value {
     font-style: italic;
+    font-size:30px;
   }
   
   .game .canvas-container {
     flex: 1;
+    margin-bottom:50px;
+  }
+
+  #counter-top {
+    width:100%;
+    height:20px;
+    color:grey;
+    margin-bottom:20px;
+  }
+
+  .collected {
+    font-size:25px;
+    float:right;
   }

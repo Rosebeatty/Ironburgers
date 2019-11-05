@@ -19,8 +19,8 @@ function main() {
 
   function createSplashScreen() {
       splashScreen = buildDom(`
-      <main style="background: url(./images/burger-bg.jpg) no-repeat;
-      background-size: 100%; background-color:blakc;;">
+      <main style="background: url(./images/burger.png) no-repeat;
+      background-size:800px 800px; background-color:black; background-position: 50% 1%;">
         <h1 id="splash-title">IRONBURGERS</h1>
         <button id="start-button">START</button>
         <button id="instructions-button">INSTRUCTIONS</button>
@@ -58,9 +58,12 @@ function main() {
         </div>
       </header>
       <div class="canvas-container">
+      <div class="collected">Ingredients:</div>
         <canvas></canvas>
       </div>
+      
     </main>
+    <div id="counter-top></div>
   `);
 
     document.body.appendChild(gameScreen);
