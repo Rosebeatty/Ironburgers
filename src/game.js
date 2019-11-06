@@ -127,6 +127,8 @@ window.requestAnimationFrame(loop);
 
 };
 
+
+
 Game.prototype.checkCollisions = function() {
 
         this.ingredients.forEach( function(ingredient) {
@@ -218,7 +220,7 @@ Game.prototype.gameOver = function() {
      this.gameIsOver = true;
      this.onGameOverCallback();
     console.log('GAME OVER');
-  
+    savePlayer(this.score)
   // Call the gameOver function from `main` to show the Game Over Screen
   //...
 

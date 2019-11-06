@@ -1,30 +1,44 @@
-const score = [
-    {
-        name:"Rose",
-        score: 200,
-    },
-    {
-        name:"Tudor",
-        score: 100,
-    },
-    {
-        name:"John",
-        score: 300,
-    },
-];
-
-var localStorage = localStorage.getItem("score") === null;
+function savePlayer(score) {
+    var score;
+    var lastGame = { score: score };
 
 if(localStorage.getItem("score") === null) {
-    var score = [];
-    score.push(lastGame)
+    score = [];
+} else {
+        score = JSON.parse(localStorage.getItem('score'));
+      }
+    score.push(lastGame);
+    var scoreStringify = JSON.stringify(score);
+    localStorage.setItem("score", scoreStringify);
+   
+    let storageItems = JSON.parse(localStorage.getItem("score"));
+
+    console.log(storageItems);  
+} 
+/*
+    for(let i = 0; i < storageItems.length; i++) {
+     console.log(storageItems[i]);
+    }
 }
+   
 
-const scoreStringify = JSON.stringify(score);
+storageItems.sort(function(a,b) {
+    return a - b;
+})
+*/
 
-localStorage.setItem("score", scoreStringify);
+var printScore = 
+` <tr>
+    <th>Name</th>
+    <th>Score</th>
+    </tr>
+`
 
-var retrievedScore = localStorage.getItem("score");
+var scoreBoard = document.getElementById('score-board')
+scoreBoard.innerHTML = printScore
 
-var parsedScore = JSON.parse(retrievedScore);
 
+
+   // let Score = Math.max(...storageItemsArray);
+   // Score.innerHTML = "Highscore: " + Score;
+ 

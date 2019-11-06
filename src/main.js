@@ -13,7 +13,42 @@ function main() {
   var game; // instance of the Game
   var splashScreen; // Start Screen
   var gameOverScreen;
+  var instructionsScreen;
 
+
+  function createInstructionsScreen() {
+    instructionsScreen = buildDom(`
+    <main>
+    <h1 id="">Instructions</h1>
+    <p id="objective"> <span>Objective:</span></p>
+    <p id="controls"> <span>Controls</span></p>
+    
+
+    <button id="back-button">Back</button>
+   
+    </main>
+    
+    `);
+    removeSplashScreen();
+    
+    document.body.appendChild(instructionsScreen);
+
+    var backButton = instructionsScreen.querySelector('button');
+
+    backButton.addEventListener('click', backToSplashScreen);
+  }
+
+
+  function backToSplashScreen() {
+    removeInstructionsScreen();
+    createSplashScreen();
+  }
+  
+
+  function removeInstructionsScreen() {
+    instructionsScreen.remove();
+
+};
     
   // -- splash screen
 
@@ -22,23 +57,32 @@ function main() {
       <main style="background: url(./images/burger.png) no-repeat;
       background-size:800px 800px; background-color:black; background-position: 50% 5%;">
         <h1 id="splash-title">IRONBURGERS</h1>
+       
         <button id="start-button">START</button>
-        <button id="instructions-button">INSTRUCTIONS</button>
+        <button id="instructions-button"">INSTRUCTIONS</button>
         <label id="name-input">YOUR NAME: </label>
         <input class="player-name" type="text" maxlength="6">
         </main>`
       );
+
+    
     document.body.appendChild(splashScreen);
 
     var startButton = splashScreen.querySelector('button');
     
     startButton.addEventListener('click', startGame);
+
+    var instructionsButton = splashScreen.querySelector('button:nth-of-type(2)');
+
+    instructionsButton.addEventListener('click',  createInstructionsScreen);
+
   }
 
   function removeSplashScreen() {
         splashScreen.remove();
 
   };
+
 
   // -- game screen
 
@@ -76,11 +120,13 @@ function main() {
     return gameScreen;
   };
 
+  
 
   function removeGameScreen() {
       game.removeGameScreen();
 
   };
+
 
     
   // -- game over screen
@@ -91,7 +137,7 @@ function main() {
         <h1 id="game-over">GAME OVER</h1>
         <p id="your-score">Your Score: <span></span></p>
         
-        <a id="score-board">SCOREBOARD</a>
+        <div id="score-board">SCOREBOARD</div>
 
         <button id="restart-button">RESTART</button>
        
@@ -130,6 +176,7 @@ function startGame() {
         gameOver(game.score);					// <-- UPDATE
       });
   }
+
 
   function gameOver(score) {
     removeGameScreen();
