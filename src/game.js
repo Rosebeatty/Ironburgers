@@ -10,7 +10,7 @@ function Game () {
     this.gameScreen = null;
     this.score = 0;
     this.burger = [];
-    this.gameTime = 60;
+    this.gameTime = 100;
     this.countFrames = 0;
     this.countBack = 0;
     this.countSeconds = 0;
@@ -33,6 +33,8 @@ Game.prototype.start = function() {
     this.scoreEle = this.gameScreen.querySelector('.score .value');
     this.timerEle = this.gameScreen.querySelector('.time .value');
     this.collectedEle = this.gameScreen.querySelector('.collected');
+    this.collectedBurgerEle = this.gameScreen.querySelector('.collected2');
+
     
 
     this.containerWidth = this.canvasContainer.offsetWidth;
@@ -74,9 +76,10 @@ Game.prototype.startLoop = function() {
     var loop = function () {
         //console.log('in loop');
 
-        if(Math.random() > 0.98 && Math.random() > 0.4) {
+
+        if(Math.random() > 0.98 && Math.random() > 0.55) {
             var randomX = this.canvas.width * Math.random();
-            var ingredient = new Ingredients(this.canvas, randomX, 2.5, this.ingredients.randomIngredient);
+            var ingredient = new Ingredients(this.canvas, randomX, 2.4, this.ingredients.randomIngredient);
             this.ingredients.push(ingredient); 
             //console.log(ingredient)
             }
@@ -186,9 +189,12 @@ Game.prototype.serveBurger = function(serve) {
         if(this.checkIngredients() === true) {
             this.score += 100;
             this.burger=[];
+             this.collectedEle.innerHTML = "";
+             this.collectedBurgerEle.appendChild(document.createElement('img')).src = `./images/burger.png`;
         } else if ( this.checkIngredients() === false) {
             this.player.removeLife();
             this.burger=[];
+            this.collectedEle.innerHTML= "";
            // console.log(ing)
         }
 

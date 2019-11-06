@@ -20,10 +20,12 @@ function main() {
   function createSplashScreen() {
       splashScreen = buildDom(`
       <main style="background: url(./images/burger.png) no-repeat;
-      background-size:800px 800px; background-color:black; background-position: 50% 1%;">
+      background-size:800px 800px; background-color:black; background-position: 50% 5%;">
         <h1 id="splash-title">IRONBURGERS</h1>
         <button id="start-button">START</button>
         <button id="instructions-button">INSTRUCTIONS</button>
+        <label id="name-input">YOUR NAME: </label>
+        <input class="player-name" type="text" maxlength="6">
         </main>`
       );
     document.body.appendChild(splashScreen);
@@ -45,15 +47,15 @@ function main() {
     <main class="game container">
       <header>
       <div class="time">
-          <span class="label">Time Left:</span>
+          <span class="label">TIME:</span>
           <span class="value"></span>
         </div>
         <div class="lives">
-          <span class="label">Lives:</span>
+          <span class="label">LIVES:</span>
           <span class="value"></span>
         </div>
         <div class="score">
-          <span class="label">Score:</span>
+          <span class="label">SCORE:</span>
           <span class="value"></span>
         </div>
       </header>
@@ -61,8 +63,10 @@ function main() {
       
         <canvas></canvas>
       </div>
+      <div class="collected2">
+      <span class="label" id="collect">INGREDIENTS:</span>
       <div class="collected">
-      <span class="label" id="collect">Ingredients:</span>
+      </div>
       </div>
     </main>
   
@@ -86,10 +90,11 @@ function main() {
       <main>
         <h1 id="game-over">GAME OVER</h1>
         <p id="your-score">Your Score: <span></span></p>
+        
+        <a id="score-board">SCOREBOARD</a>
+
         <button id="restart-button">RESTART</button>
-        <table>
-            <th>Scoreboard:</th>
-        </table>
+       
         </main>
     `);
   

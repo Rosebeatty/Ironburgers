@@ -4,7 +4,7 @@ function Player (canvas, lives) {
     this.canvas = canvas;
     this.ctx = this.canvas.getContext('2d');
     this.lives = lives;
-    this.size = 90;
+    this.size = 130;
     this.x = canvas.width / 2;
     this.y = canvas.height - this.size;
     this.direction = 0;
