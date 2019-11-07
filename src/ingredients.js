@@ -3,7 +3,7 @@
 function Ingredients (canvas, x, speed){
     this.canvas = canvas;
     this.ctx = canvas.getContext('2d');
-    this.size = 80;
+    this.size = 50;
     this.x = x;
     this.y = 0;
     this.speed = speed;
@@ -19,7 +19,7 @@ Ingredients.prototype.draw = function() {
     var image = new Image();
     const imageUrl = `./images/${this.randomIngredient}.png`;
     image.src  = imageUrl;
-    this.ctx.drawImage(image, this.x, this.y, this.size, this.size);
+    this.ctx.drawImage(image, this.x, this.y, 60, 40);
 
 };
 
@@ -27,7 +27,7 @@ Ingredients.prototype.collect = function() {
    
     var image = new Image();
     image.src  = 
-    this.ctx.drawImage(image, this.x, this.y, this.size, this.size);
+    this.ctx.drawImage(image, this.x, this.y, 40, 60);
 
 };
 

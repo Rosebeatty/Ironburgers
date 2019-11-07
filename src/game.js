@@ -1,6 +1,6 @@
 'use-strict'
 
-function Game () {
+function Game (name) {
     this.canvas = null;
     this.ctx = null;
     this.ingredients = [];
@@ -14,8 +14,7 @@ function Game () {
     this.countFrames = 0;
     this.countBack = 0;
     this.countSeconds = 0;
-    
-  
+    this.name = name;
 }
 
 // Create `ctx`, a `player` and start the Canvas loop
@@ -29,13 +28,12 @@ Game.prototype.start = function() {
     this.canvas.style.marginBottom = "20px;";
 
 
+
     this.livesEle = this.gameScreen.querySelector('.lives .value');
     this.scoreEle = this.gameScreen.querySelector('.score .value');
     this.timerEle = this.gameScreen.querySelector('.time .value');
     this.collectedEle = this.gameScreen.querySelector('.collected');
     this.collectedBurgerEle = this.gameScreen.querySelector('.collected2');
-
-    
 
     this.containerWidth = this.canvasContainer.offsetWidth;
     this.containerHeight = this.canvasContainer.offsetHeight;
@@ -220,7 +218,7 @@ Game.prototype.gameOver = function() {
      this.gameIsOver = true;
      this.onGameOverCallback();
     console.log('GAME OVER');
-    savePlayer(this.score)
+    savePlayer(this.name, this.score)
   // Call the gameOver function from `main` to show the Game Over Screen
   //...
 

@@ -18,13 +18,27 @@ function main() {
 
   function createInstructionsScreen() {
     instructionsScreen = buildDom(`
-    <main>
-    <h1 id="">Instructions</h1>
-    <p id="objective"> <span>Objective:</span></p>
-    <p id="controls"> <span>Controls</span></p>
+    <main id="instructions-main">
+    <h2 id="instructions-title">HOW TO PLAY</h2>
+
+    <div id="objective-text"> 
+    <p>Objective: Serve as many burgers as possible in 100 seconds and without losing all 3 lives</p>
+ </br>
+    <p>Make a burger by collecting two buns, a tomato, salad, a patty and cheese.</p>
+    </br>
+    <p> Burger = 100 points </p>
+    </br>
+    <p>Lose a life by serving a burger containing the wrong ingredients</p>
+    </br>
     
 
-    <button id="back-button">Back</button>
+</div>
+
+    <h2 id="objective"> Controls</h2>
+  
+    
+
+    <button id="back-button">Back To Menu</button>
    
     </main>
     
@@ -54,18 +68,17 @@ function main() {
 
   function createSplashScreen() {
       splashScreen = buildDom(`
-      <main style="background: url(./images/burger.png) no-repeat;
-      background-size:800px 800px; background-color:black; background-position: 50% 5%;">
+      <main stlye="background-color:black;">
+       <div id="title-page">
         <h1 id="splash-title">IRONBURGERS</h1>
-       
         <button id="start-button">START</button>
-        <button id="instructions-button"">INSTRUCTIONS</button>
-        <label id="name-input">YOUR NAME: </label>
-        <input class="player-name" type="text" maxlength="6">
+        <button id="instructions-button"">HOW TO PLAY</button>
+        <input class="player-name" type="text" maxlength="6" placeholder="Your Name"s>
+       </div>
         </main>`
       );
 
-    
+     
     document.body.appendChild(splashScreen);
 
     var startButton = splashScreen.querySelector('button');
@@ -76,6 +89,7 @@ function main() {
 
     instructionsButton.addEventListener('click',  createInstructionsScreen);
 
+   
   }
 
   function removeSplashScreen() {
@@ -88,7 +102,7 @@ function main() {
 
   function createGameScreen() {
     var gameScreen = buildDom(`
-    <main class="game container">
+    <main class="game container" id="gameTop">
       <header>
       <div class="time">
           <span class="label">TIME:</span>
@@ -136,9 +150,17 @@ function main() {
       <main>
         <h1 id="game-over">GAME OVER</h1>
         <p id="your-score">Your Score: <span></span></p>
-        
-        <div id="score-board">SCOREBOARD</div>
-
+        <table id="score-board">
+        <p id="score-title"> SCOREBOARD</p>
+        <tbody>
+        <tr>
+        <th id ="userName">Name</th>  
+        </tr>
+        <tr>
+        <th id="userScore">Score</th>
+        </tr>
+        </tbody>
+        </table>
         <button id="restart-button">RESTART</button>
        
         </main>
@@ -167,7 +189,9 @@ function startGame() {
     // later we need to add clearing of the gameOverScreen
     removeGameOverScreen();
   
-    game = new Game();
+    var name = splashScreen.querySelector('.player-name').value
+    console.log(name);
+    game = new Game(name);
     game.gameScreen = createGameScreen();
   
     game.start();

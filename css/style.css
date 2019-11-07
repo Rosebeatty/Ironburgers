@@ -48,13 +48,13 @@ html {
     justify-content: center;
     margin:0 auto;
     height:100%;
-    padding-top:20px;
+    padding-top:0px;
   }
 
 
 #splash-title {
-  font-size:100px;
-  padding-top:20px;
+  font-size:105px;
+  
   font-weight:800;
 }
   
@@ -114,7 +114,7 @@ main button {
   margin-top:30px;
   border:none;
   font-weight:600;
-  margin-top:150px;
+  
   cursor: pointer;
 }
 
@@ -128,7 +128,7 @@ main button {
   
   @media (min-width: 768px) {
     .container {
-      max-width: 1028px;
+      max-width: 1032px;
       margin: 0 auto;
     }
   }
@@ -190,7 +190,7 @@ main button {
   .collected  {
     font-size:25px;
     margin-bottom:10px;
-    padding-top:15px;
+    
     padding-bottom:20px;
     height:50px;
     display:flex;
@@ -200,14 +200,15 @@ main button {
 
   .collected img {
     width:60px;
-    height:60px;
+    height:30px;
     margin-bottom:-25px;
   
   }
   .collected2 img {
-    width:60px;
-    height:60px;
-    margin-bottom:-25px;
+    width:40px;
+    height:30px;
+    margin-bottom:-15px;
+    
   
   }
 
@@ -215,24 +216,45 @@ main button {
     display:flex;
     flex-direction: row;
     justify-content:center;
+    align-items:center;
    
   }
 
 
   #collect {
-    padding-top:10px;
-    padding-bottom:20px;
+    padding-top:0px;
+    padding-bottom:15px;
+   
+  }
+
+  #gameTop {
+    padding-top:20px;
   }
 
   #score-board {
-    margin-top:40px;
+    margin-top:30px;
     font-size:25px;
     color:rgba(30, 28, 28, 0.778);
     font-weight:600;
+    padding-left:0;
+    width:300px;
+    margin: 0 auto;
+    
+    background-color:cornflowerblue;
+  }
+
+  #score-title {
+    margin-top:60px;
+    font-size:25px;
+    color:rgba(30, 28, 28, 0.778);
+    font-weight:600;
+    padding-left:0;
+padding-top:50px;
+    margin: 0 auto;
   }
 
   #game-over {
-    margin-top:100px;
+    margin-top:30px;
   }
 
   #your-score {
@@ -243,13 +265,71 @@ main button {
     width:150px;
     padding:10px;
     margin: 0 auto;
-    border-radius: 5px;
-    margin-top:20px;
+    border-radius: 10px;
+    margin-top:8px;
+    text-align:center;
+    font-size:16px;
+    cursor: pointer;
+    font-weight:600;
+    border-color: cornflowerblue;
+  }
+
+  .player-name:hover {
+    background-color:black;
+    color:white;
+  }
+
+  .player-name:focus {
+    outline: none;
   }
 
   #name-input {
-    margin-top:55px;
-    font-size:30px;
+    margin-top:15px;
+    color:white;
+    font-size:25px;
+    font-weight:600;
   }
 
-  
+  tbody {
+    display:flex;
+    flex-direction:row;
+    margin:20px auto;
+    justify-content: center;
+    
+  }
+
+  #title-page {
+    background: url(../images/burger.png) no-repeat;
+    background-size:800px 800px; 
+    background-color:black; 
+    background-position: 50% 18px;
+     
+    height:100%;
+    display: flex;
+    flex-direction: column;
+    justify-content:center;
+  }
+
+  #instructions-main {
+    background-color:black;
+  }
+
+ #instructions-title {
+  text-decoration: underline;
+ }
+
+ #objective {
+   
+   font-size:35px;
+ }
+
+ #controls {
+   margin-top:40px;
+ }
+
+ #objective-text {
+   width:900px;
+   line-height:20px;
+   margin:0 auto;
+   font-size:20px;
+ }
