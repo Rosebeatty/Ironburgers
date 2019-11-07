@@ -23,14 +23,6 @@ Ingredients.prototype.draw = function() {
 
 };
 
-Ingredients.prototype.collect = function() {
-   
-    var image = new Image();
-    image.src  = 
-    this.ctx.drawImage(image, this.x, this.y, 40, 60);
-
-};
-
 
 Ingredients.prototype.updatePosition = function() {
     this.y =  this.y + this.speed;
