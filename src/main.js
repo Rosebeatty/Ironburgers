@@ -22,22 +22,35 @@ function main() {
     <h2 id="instructions-title">HOW TO PLAY</h2>
 
     <div id="objective-text"> 
-    <p>Objective: Serve as many burgers as possible in 100 seconds and without losing all 3 lives</p>
- </br>
-    <p>Make a burger by collecting two buns, a tomato, salad, a patty and cheese.</p>
+    <h4>Make and serve as many burgers as possible within 100 seconds</h4>
+
+    <p>6 Ingredients = 1 Burger = 100 points</p>
+    <img id="instructions-img" src="images/bun.png">
+    <img id="instructions-img" src="images/bun2.png">
+    <img id="instructions-img" src="images/tomatoes.png">
+    <img id="instructions-img" src="images/salad.png">
+    <img id="instructions-img" src="images/patty.png">
+    <img id="instructions-img" src="images/cheese.png">
     </br>
-    <p> Burger = 100 points </p>
-    </br>
-    <p>Lose a life by serving a burger containing the wrong ingredients</p>
     </br>
     
+    <p>Lose a life when your burger contains the wrong ingredients  </p>
+    </br>
+     <p>3 Lives </p>
 
-</div>
 
     <h2 id="objective"> Controls</h2>
-  
-    
+    <div id="arrows">
+    <span style="font-size:15px;">Left</span>
+    <img src="./images/arrow-left-icon.png">
 
+    <img src="./images/arrow-right-icon.png">
+    <span style="font-size:15px;">Right</span>
+    </div>
+   <div>
+    <img id ="down" src="./images/arrow-down-icon.png">
+    <p style="font-size:15px;padding-bottom:10px;">Down to Serve</p>
+  
     <button id="back-button">Back To Menu</button>
    
     </main>
@@ -68,12 +81,12 @@ function main() {
 
   function createSplashScreen() {
       splashScreen = buildDom(`
-      <main stlye="background-color:black;">
+      <main id=" splashScreenMain" stlye="background-color:black;">
        <div id="title-page">
         <h1 id="splash-title">IRONBURGERS</h1>
         <button id="start-button">START</button>
         <button id="instructions-button"">HOW TO PLAY</button>
-        <input class="player-name" type="text" maxlength="6" placeholder="Your Name"s>
+        <input class="player-name" type="text" maxlength="6" placeholder="YOUR NAME"s>
        </div>
         </main>`
       );
@@ -123,8 +136,10 @@ function main() {
       </div>
       <div class="collected2">
       <span class="label" id="collect">INGREDIENTS:</span>
+     
       <div class="collected">
       </div>
+      <div id="burgers-made"></div>
       </div>
     </main>
   
@@ -150,9 +165,10 @@ function main() {
       <main>
         <h1 id="game-over">GAME OVER</h1>
         <p id="your-score">Your Score: <span></span></p>
+        <div id="score-title">
         <table id="score-board">
-        <p id="score-title"> SCOREBOARD</p>
         <tbody>
+        <p id="board-title"e> SCOREBOARD</p>
         <tr>
         <th id ="userName">Name</th>  
         </tr>
@@ -161,6 +177,7 @@ function main() {
         </tr>
         </tbody>
         </table>
+        </div>
         <button id="restart-button">RESTART</button>
        
         </main>

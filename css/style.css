@@ -54,18 +54,20 @@ html {
 
 #splash-title {
   font-size:105px;
-  
+
   font-weight:800;
 }
   
 main button {
   cursor: pointer;
 }
+
+
   
 #start-button {
   width:20%;
   padding:12px;
-  margin-top:-27px;
+  margin-top:-25px;
   margin-left:auto;
   margin-right:auto;
   font-size:25px;
@@ -78,7 +80,7 @@ main button {
 
 #instructions-button {
   width:20%;
-  padding:12px;
+  padding:15px 12px 12px 12px;
   margin:5px auto;
   font-size:25px;
   background-color:transparent;
@@ -86,10 +88,11 @@ main button {
   border-radius: 10px;
   border:none;
   font-weight:600;
+  cursor: pointer;
 }
 
 #back-button {
-  width:20%;
+  width:30%;
   padding:12px;
   margin:5px auto;
   font-size:25px;
@@ -98,6 +101,12 @@ main button {
   border-radius: 10px;
   border:none;
   font-weight:600;
+  color:#fff;
+}
+
+#back-button:hover {
+
+  color:yellow;
 }
 
 
@@ -128,12 +137,18 @@ main button {
   
   @media (min-width: 768px) {
     .container {
-      max-width: 1032px;
+      max-width: 1030px;
       margin: 0 auto;
     }
   }
+
+  @media (min-height: 768px) {
+    #title-page {
+      background-size:800px
+    }
+  }
   
-  
+ 
   /* ---- components ---- */
   
   .game {
@@ -190,7 +205,6 @@ main button {
   .collected  {
     font-size:25px;
     margin-bottom:10px;
-    
     padding-bottom:20px;
     height:50px;
     display:flex;
@@ -208,8 +222,6 @@ main button {
     width:40px;
     height:30px;
     margin-bottom:-15px;
-    
-  
   }
 
   .collected2{
@@ -217,7 +229,6 @@ main button {
     flex-direction: row;
     justify-content:center;
     align-items:center;
-   
   }
 
 
@@ -234,23 +245,28 @@ main button {
   #score-board {
     margin-top:30px;
     font-size:25px;
-    color:rgba(30, 28, 28, 0.778);
+    color:#fff;
     font-weight:600;
     padding-left:0;
     width:300px;
     margin: 0 auto;
-    
     background-color:cornflowerblue;
   }
 
+ #board-title {
+    text-decoration: underline;
+  }
+
   #score-title {
-    margin-top:60px;
+    margin-top:100px;
     font-size:25px;
     color:rgba(30, 28, 28, 0.778);
     font-weight:600;
     padding-left:0;
-padding-top:50px;
+padding-top:25px;
     margin: 0 auto;
+    background-color: cornflowerblue;
+    box-shadow: 5px 8px;
   }
 
   #game-over {
@@ -259,29 +275,24 @@ padding-top:50px;
 
   #your-score {
     margin-top:10px;
+    margin-bottom:30px;
   }
 
   .player-name {
     width:150px;
     padding:10px;
     margin: 0 auto;
-    border-radius: 10px;
-    margin-top:8px;
+  
+    margin-top:6px;
+    color:black;
     text-align:center;
     font-size:16px;
-    cursor: pointer;
+   background-color: transparent;
     font-weight:600;
-    border-color: cornflowerblue;
+    border-bottom: 1px solid white;
+ 
   }
 
-  .player-name:hover {
-    background-color:black;
-    color:white;
-  }
-
-  .player-name:focus {
-    outline: none;
-  }
 
   #name-input {
     margin-top:15px;
@@ -293,22 +304,24 @@ padding-top:50px;
   tbody {
     display:flex;
     flex-direction:row;
-    margin:20px auto;
+    margin:10px auto;
     justify-content: center;
     
   }
 
   #title-page {
-    background: url(../images/burger.png) no-repeat;
-    background-size:800px 800px; 
+    background: url(../images/rose-background-done.png) no-repeat;
+   background-size:cover;
     background-color:black; 
-    background-position: 50% 18px;
-     
+    background-position: center;
     height:100%;
     display: flex;
     flex-direction: column;
     justify-content:center;
+  
+
   }
+
 
   #instructions-main {
     background-color:black;
@@ -316,11 +329,15 @@ padding-top:50px;
 
  #instructions-title {
   text-decoration: underline;
+  margin-top:10px;
+  color:#fff;
  }
 
  #objective {
-   
+   padding-top:6px;
    font-size:35px;
+   text-decoration: underline;
+   color:#fff;
  }
 
  #controls {
@@ -328,8 +345,46 @@ padding-top:50px;
  }
 
  #objective-text {
-   width:900px;
+   width:800px;
    line-height:20px;
-   margin:0 auto;
+   margin:-20px auto;
    font-size:20px;
+
+ }
+
+ ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: white;
+ }
+
+ th {
+   padding-bottom: 15px;
+ }
+
+ #game-rules {
+ list-style-type:none;
+ }
+
+ #game-rules li {
+  display:inline;
+ }
+
+ #arrows img {
+
+  
+ 
+ }
+
+ #down {
+margin:0 auto;
+
+
+ }
+
+ #instructions-img {
+   height:30px;
+ }
+
+ #burgers-made {
+   height:30px;
+   margin-top:-25px;
  }

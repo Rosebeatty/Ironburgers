@@ -15,6 +15,7 @@ function Game (name) {
     this.countBack = 0;
     this.countSeconds = 0;
     this.name = name;
+    this.burgersMade;
 }
 
 // Create `ctx`, a `player` and start the Canvas loop
@@ -27,13 +28,12 @@ Game.prototype.start = function() {
     this.canvas.style.backgroundSize = "contain";
     this.canvas.style.marginBottom = "20px;";
 
-
-
     this.livesEle = this.gameScreen.querySelector('.lives .value');
     this.scoreEle = this.gameScreen.querySelector('.score .value');
     this.timerEle = this.gameScreen.querySelector('.time .value');
     this.collectedEle = this.gameScreen.querySelector('.collected');
     this.collectedBurgerEle = this.gameScreen.querySelector('.collected2');
+    this.burgersMade = this.gameScreen.querySelector('#burgers-made');
 
     this.containerWidth = this.canvasContainer.offsetWidth;
     this.containerHeight = this.canvasContainer.offsetHeight;
@@ -77,7 +77,7 @@ Game.prototype.startLoop = function() {
 
         if(Math.random() > 0.98 && Math.random() > 0.55) {
             var randomX = this.canvas.width * Math.random();
-            var ingredient = new Ingredients(this.canvas, randomX, 2.4, this.ingredients.randomIngredient);
+            var ingredient = new Ingredients(this.canvas, randomX, 2.6, this.ingredients.randomIngredient);
             this.ingredients.push(ingredient); 
             //console.log(ingredient)
             }
@@ -126,12 +126,11 @@ window.requestAnimationFrame(loop);
 };
 
 
-
 Game.prototype.checkCollisions = function() {
 
         this.ingredients.forEach( function(ingredient) {
           //console.log(ingredient.randomIngredient)
-          // We will implement didCollide() in the next step
+          // Implement didCollide() in the next step
           if ( this.player.didCollide(ingredient) ) {
       
             //this.player.removeLife();
@@ -147,18 +146,12 @@ Game.prototype.checkCollisions = function() {
 
             }
              
-            
-            // Move the enemy off screen to the left
+            // Move the enemy off screen
             ingredient.y = 0 - ingredient.size;
       
             if (this.player.lives === 0) {
               this.gameOver();
             }
-          
-           //var time1 = parseInt(new Date().getTime());
-           //console.log(time1 /3600000000)
-        
-        
           }
         }, this);
      
@@ -169,8 +162,6 @@ Game.prototype.checkCollisions = function() {
 Game.prototype.checkIngredients = function() {
 
     if (this.burger.sort().join() !== this.ingredients2.join()) {
-        //this.burger.push(ingredient); 
-        
         console.log(this.burger)
         return false;
     } else if (this.burger.sort().join() === this.ingredients2.join()) {
@@ -179,18 +170,16 @@ Game.prototype.checkIngredients = function() {
     }
 }
 
-
 Game.prototype.serveBurger = function(serve) {
-    /*if(checkIngredients(`${source}`) === true) {
-     this.score += 1;
-    };
-    this.score += 1;*/
     if(serve === 'down') {
         if(this.checkIngredients() === true) {
             this.score += 100;
             this.burger=[];
              this.collectedEle.innerHTML = "";
-             this.collectedBurgerEle.appendChild(document.createElement('img')).src = `./images/burger.png`;
+             this.burgerImg = document.createElement('img');
+             this.burgerImg.src = `./images/burger2.png`;
+             this.burgersMade.appendChild(this.burgerImg);
+          
         } else if ( this.checkIngredients() === false) {
             this.player.removeLife();
             this.burger=[];
@@ -214,14 +203,13 @@ Game.prototype.passGameOverCallback = function(gameOver) {
 };
 
 Game.prototype.gameOver = function() {
-      // flag `gameIsOver = true` stops the loop
+      // gameIsOver = true stops the loop
      this.gameIsOver = true;
      this.onGameOverCallback();
     console.log('GAME OVER');
     savePlayer(this.name, this.score)
   // Call the gameOver function from `main` to show the Game Over Screen
-  //...
-
+  
 };
 
 Game.prototype.removeGameScreen = function() {
