@@ -118,31 +118,28 @@ window.requestAnimationFrame(loop);
 
 };
 
-
 checkCollisions() {
-
-        this.ingredients.forEach(ingredient => {
+    this.ingredients.forEach(ingredient => {
           //console.log(ingredient.randomIngredient)
           // Implement didCollide() in the next step
-          if ( this.player.didCollide(ingredient) ) {
+        if ( this.player.didCollide(ingredient) ) {
       
             //this.player.removeLife();
            // console.log('lives', this.player.lives);
 
-            this.checkIngredients(ingredient.randomIngredient);
+        this.checkIngredients(ingredient.randomIngredient);
            
-            if(this.burger.length >= 6) {
-                this.burger.length = 6;
-            } else {
-                this.burger.push(ingredient.randomIngredient); 
-                this.collectedEle.appendChild(document.createElement('img')).src = `./images/${ingredient.randomIngredient}.png`;
-
-            }
-             
-            // Move the enemy off screen
+        if(this.burger.length >= 6) {
+            this.burger.length = 6;
+        } 
+        else {
+            this.burger.push(ingredient.randomIngredient); 
+            this.collectedEle.appendChild(document.createElement('img')).src = `./images/${ingredient.randomIngredient}.png`;
+        }
+          // Move the enemy off screen
             ingredient.y = 0 - ingredient.size;
       
-            if (this.player.lives === 0) {
+        if (this.player.lives === 0) {
               this.gameOver();
             }
           }
@@ -157,11 +154,11 @@ checkIngredients() {
     if (this.burger.sort().join() !== this.ingredients2.join()) {
         console.log(this.burger)
         return false;
-    } else if (this.burger.sort().join() === this.ingredients2.join()) {
+        } else if (this.burger.sort().join() === this.ingredients2.join()) {
         console.log(this.burger)
         return true;
+         }
     }
-}
 
 serveBurger(serve) {
     if(serve === 'down') {
@@ -178,22 +175,19 @@ serveBurger(serve) {
             this.burger=[];
             this.collectedEle.innerHTML= "";
            // console.log(ing)
+            }
         }
-
-        }
-}
+    }
 
 updateGameStats() {
     this.livesEle.innerHTML = this.player.lives;
     this.scoreEle.innerHTML = this.score;
     this.timerEle.innerHTML = this.countBack;
-
-  };
+    };
 
 passGameOverCallback(gameOver) {
     this.onGameOverCallback = gameOver;
-
-};
+    };
 
 gameOver() {
       // gameIsOver = true stops the loop
@@ -201,12 +195,11 @@ gameOver() {
      this.onGameOverCallback();
     console.log('GAME OVER');
     savePlayer(this.name, this.score)
-  // Call the gameOver function from `main` to show the Game Over Screen
-  
-};
+     // Call the gameOver function from `main` to show the Game Over Screen
+    };
 
 removeGameScreen() {
     this.gameScreen.remove();
-};
+    };
 
 }

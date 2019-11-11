@@ -11,7 +11,6 @@ constructor (canvas, lives) {
     this.speed = 3.5;
     this.chefList = ['chef']
     this.chef = this.chefList[Math.floor(Math.random() * this.chefList.length)]
-
 }
 
 setDirection (direction) {
@@ -22,7 +21,6 @@ setDirection (direction) {
         this.direction = 1;
     }
 };
-
 
 
 didCollide (ingredient) {
@@ -49,7 +47,7 @@ didCollide (ingredient) {
         if ((crossLeft || crossRight) && (crossTop || crossBottom)) {
           return true;
         }
-        return false;
+          return false;
 
 };
 
@@ -62,23 +60,20 @@ handleScreenCollision () {
         if(this.x > screenRight - this.size) {
             this.direction = -1
         } else if (this.x< screenLeft) {
-                this.direction = 1;
+            this.direction = 1;
             }
         }
 
 removeLife() {
         if (this.lives >= 1) {
             this.lives -= 1;
-
-       
-        }
-};
+           }
+        };
 
 draw() {
     var image = new Image();
     const imageUrl = `./images/${this.chef}.png`;
     image.src  = imageUrl;
     this.ctx.drawImage(image, this.x, this.y, this.size, this.size);
-
-};
+    };
 }

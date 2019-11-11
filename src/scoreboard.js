@@ -4,17 +4,15 @@ function savePlayer(name, score) {
 
     if (localStorage.getItem("score") === null) {
         score = [];
-    } 
-    else {
+    } else {
         score = JSON.parse(localStorage.getItem('score'));
-      }
+    }
+
     score.push(lastGame);
     var scoreStringify = JSON.stringify(score);
     localStorage.setItem("score", scoreStringify);
-   
     let storageItems = JSON.parse(localStorage.getItem("score"));
 
-    
     for (let i = 0; i<8;i++) {
     var userName = document.getElementById('userName');
     var highScore = document.getElementById('userScore');
@@ -24,9 +22,9 @@ function savePlayer(name, score) {
     highScore.appendChild(td);
     userName.appendChild(td2);
 
-    storageItems.sort(function(a,b) {
+    storageItems.sort = (a,b) => {
         return b.score - a.score
-    });
+    };
 
     console.log(storageItems[i].name);  
 
