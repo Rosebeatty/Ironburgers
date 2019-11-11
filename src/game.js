@@ -91,19 +91,19 @@ startLoop() {
         this.checkCollisions();
         this.player.handleScreenCollision();
 
-        this.ingredients = this.ingredients.filter = (ingredientObj) => {
+        this.ingredients = this.ingredients.filter(ingredientObj => {
             ingredientObj.updatePosition();
             
             return ingredientObj.isInsideScreen();
-        };
+        })
 
         this.ctx.clearRect(0,0, this.canvas.width, this.canvas.height);
 
         this.player.draw();
 
-        this.ingredients.forEach = (ingredientObj) => {
+        this.ingredients.forEach(ingredientObj => {
             ingredientObj.draw();
-        };
+        })
 
         if(!this.gameIsOver) {
         window.requestAnimationFrame(loop);
