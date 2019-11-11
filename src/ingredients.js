@@ -1,6 +1,6 @@
 'use-strict'
-
-function Ingredients (canvas, x, speed){
+class Ingredients {
+constructor (canvas, x, speed){
     this.canvas = canvas;
     this.ctx = canvas.getContext('2d');
     this.size = 50;
@@ -11,11 +11,9 @@ function Ingredients (canvas, x, speed){
     this.ingredientsList = ["bun", "bun2", "salad", "cheese", "tomatoes", "patty"];
     this.randomIngredient = this.ingredientsList[Math.floor(Math.random() * this.ingredientsList.length)]
     
-}
-    
+} 
 
-Ingredients.prototype.draw = function() {
-   
+draw() {
     var image = new Image();
     const imageUrl = `./images/${this.randomIngredient}.png`;
     image.src  = imageUrl;
@@ -24,11 +22,12 @@ Ingredients.prototype.draw = function() {
 };
 
 
-Ingredients.prototype.updatePosition = function() {
+updatePosition() {
     this.y =  this.y + this.speed;
 
 };
 
-Ingredients.prototype.isInsideScreen = function() {
+isInsideScreen() {
     return this.y + this.size  > 0
 };
+}

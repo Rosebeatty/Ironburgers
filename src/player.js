@@ -1,6 +1,6 @@
 'use-strict'
-
-function Player (canvas, lives) {
+class Player {
+constructor (canvas, lives) {
     this.canvas = canvas;
     this.ctx = this.canvas.getContext('2d');
     this.lives = lives;
@@ -14,8 +14,7 @@ function Player (canvas, lives) {
 
 }
 
-
-Player.prototype.setDirection = function(direction) {
+setDirection (direction) {
 
     if(direction === 'left') {
         this.direction = -1;
@@ -26,7 +25,7 @@ Player.prototype.setDirection = function(direction) {
 
 
 
-Player.prototype.didCollide = function(ingredient) {
+didCollide (ingredient) {
     
         var playerLeft = this.x;
         var playerRight = this.x + this.size;
@@ -54,7 +53,7 @@ Player.prototype.didCollide = function(ingredient) {
 
 };
 
-Player.prototype.handleScreenCollision = function() {
+handleScreenCollision () {
         this.x = this.x + this.direction * this.speed;
 
         var screenLeft = 0;
@@ -67,7 +66,7 @@ Player.prototype.handleScreenCollision = function() {
             }
         }
 
-Player.prototype.removeLife = function() {
+removeLife() {
         if (this.lives >= 1) {
             this.lives -= 1;
 
@@ -75,10 +74,11 @@ Player.prototype.removeLife = function() {
         }
 };
 
-Player.prototype.draw = function() {
+draw() {
     var image = new Image();
     const imageUrl = `./images/${this.chef}.png`;
     image.src  = imageUrl;
     this.ctx.drawImage(image, this.x, this.y, this.size, this.size);
 
 };
+}

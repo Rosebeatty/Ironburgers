@@ -1,6 +1,6 @@
 'use-strict'
-
-function Game (name) {
+class Game {
+    constructor(name) {
     this.canvas = null;
     this.ctx = null;
     this.ingredients = [];
@@ -18,8 +18,9 @@ function Game (name) {
     this.burgersMade;
 }
 
+
 // Create `ctx`, a `player` and start the Canvas loop
-Game.prototype.start = function() {
+start() {
     this.canvasContainer = document.querySelector('.canvas-container')
     this.canvas = this.gameScreen.querySelector('canvas');
     this.ctx = this.canvas.getContext('2d');
@@ -43,7 +44,7 @@ Game.prototype.start = function() {
     this.player = new Player(this.canvas, 3);
 
     
-    this.handleKeyDown = function (event) {
+    this.handleKeyDown = (event) => {
         if(event.key === "ArrowLeft") {
             console.log("left");
             this.player.setDirection('left');
@@ -55,10 +56,7 @@ Game.prototype.start = function() {
               this.serveBurger('down');
           }
     }
-
-   // console.log(this.currentTime)
-
-      
+  
     var gameReference = this;
 
     document.body.addEventListener('keydown', this.handleKeyDown.bind(gameReference));
@@ -69,21 +67,17 @@ Game.prototype.start = function() {
 
 
 
-Game.prototype.startLoop = function() {
+startLoop() {
 
-    var loop = function () {
+    var loop = () => {
         //console.log('in loop');
-
 
         if(Math.random() > 0.98 && Math.random() > 0.55) {
             var randomX = this.canvas.width * Math.random();
             var ingredient = new Ingredients(this.canvas, randomX, 2.6, this.ingredients.randomIngredient);
             this.ingredients.push(ingredient); 
-            //console.log(ingredient)
             }
-
-
-        //this.timer = Math.floor(this.counter / 60);   
+  
         this.countFrames++
         this.countSeconds = Math.floor(this.countFrames /60);
         this.countBack = this.gameTime - this.countSeconds;
@@ -115,10 +109,9 @@ Game.prototype.startLoop = function() {
         window.requestAnimationFrame(loop);
        
     }
-   
 
    this.updateGameStats();
-}.bind(this);
+};
 
 window.requestAnimationFrame(loop);
 
@@ -126,9 +119,9 @@ window.requestAnimationFrame(loop);
 };
 
 
-Game.prototype.checkCollisions = function() {
+checkCollisions() {
 
-        this.ingredients.forEach( function(ingredient) {
+        this.ingredients.forEach(ingredient => {
           //console.log(ingredient.randomIngredient)
           // Implement didCollide() in the next step
           if ( this.player.didCollide(ingredient) ) {
@@ -159,7 +152,7 @@ Game.prototype.checkCollisions = function() {
 
 // Burger array should contain two buns, no duplicates
 
-Game.prototype.checkIngredients = function() {
+checkIngredients() {
 
     if (this.burger.sort().join() !== this.ingredients2.join()) {
         console.log(this.burger)
@@ -170,7 +163,7 @@ Game.prototype.checkIngredients = function() {
     }
 }
 
-Game.prototype.serveBurger = function(serve) {
+serveBurger(serve) {
     if(serve === 'down') {
         if(this.checkIngredients() === true) {
             this.score += 100;
@@ -190,19 +183,19 @@ Game.prototype.serveBurger = function(serve) {
         }
 }
 
-Game.prototype.updateGameStats = function() {
+updateGameStats() {
     this.livesEle.innerHTML = this.player.lives;
     this.scoreEle.innerHTML = this.score;
     this.timerEle.innerHTML = this.countBack;
 
   };
 
-Game.prototype.passGameOverCallback = function(gameOver) {
+passGameOverCallback(gameOver) {
     this.onGameOverCallback = gameOver;
 
 };
 
-Game.prototype.gameOver = function() {
+gameOver() {
       // gameIsOver = true stops the loop
      this.gameIsOver = true;
      this.onGameOverCallback();
@@ -212,6 +205,8 @@ Game.prototype.gameOver = function() {
   
 };
 
-Game.prototype.removeGameScreen = function() {
+removeGameScreen() {
     this.gameScreen.remove();
 };
+
+}
